@@ -3,32 +3,63 @@ package com.sanika.beachapplication.model;
 import com.google.gson.annotations.SerializedName;
 
 public class Beach {
-    private String type;
-    private BeachProperties properties;
-    private Geometry geometry;
+    private int id;
+    private String name;
+    private String location;
+    private String imageUrl;
 
-    public String getType() {
-        return type;
+    // Constructor
+    public Beach(int id, String name, String location, String imageUrl) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+        this.imageUrl = imageUrl;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public Beach() {
+
     }
 
-    public BeachProperties getProperties() {
-        return properties;
+    // Getters and Setters
+    public int getId() {
+        return id;
     }
 
-    public void setProperties(BeachProperties properties) {
-        this.properties = properties;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Geometry getGeometry() {
-        return geometry;
+    public String getName() {
+        return name;
     }
 
-    public void setGeometry(Geometry geometry) {
-        this.geometry = geometry;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "Beach{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
     }
 }
-

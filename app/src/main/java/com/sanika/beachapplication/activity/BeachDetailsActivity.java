@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.sanika.beachapplication.R;
 import com.sanika.beachapplication.adapter.HotelAdapter;
 import com.sanika.beachapplication.api.ApiClient;
@@ -50,6 +51,7 @@ public class BeachDetailsActivity extends AppCompatActivity {
     private List<HotelDetail> hotelDetails;
     ImageView imgtemp;
     ImageView imageView4;
+    ImageView imageLogo;
     private HotelAdapter hotelAdapter; // Assuming you have a HotelAdapter to display hotels
     //private List<Hotel> hotelList; // Assuming you have a Hotel class
 
@@ -64,6 +66,7 @@ public class BeachDetailsActivity extends AppCompatActivity {
         recyclerViewHotels = findViewById(R.id.recyclerViewHotels);
         imgtemp = findViewById(R.id.imgtemp);
         imageView4 = findViewById(R.id.imageView4);
+        imageLogo = findViewById(R.id.imageLogo);
 
         hotelDetails = new ArrayList<>();
         hotelDetails = HotelSampleData.getSampleHotelDetails();
@@ -76,10 +79,16 @@ public class BeachDetailsActivity extends AppCompatActivity {
         // Get beach details from intent
         Intent intent = getIntent();
         String beachName = intent.getStringExtra("BEACH_NAME");
+        String BEACH_Url = intent.getStringExtra("BEACH_Url");
         double beachLatitude = intent.getDoubleExtra("BEACH_LATITUDE", 0);
         double beachLongitude = intent.getDoubleExtra("BEACH_LONGITUDE", 0);
 
         textViewBeachName.setText(beachName);
+        // Load beach image using Glide
+        Glide.with(BeachDetailsActivity.this)
+                .load(BEACH_Url)  // Ensure this is the correct URL for the image
+                .placeholder(R.drawable.img3) // Optional: Placeholder image while loading
+                .into(imageLogo);
 
         // Fetch hotels and weather
       //  fetchNearbyHotels(beachLatitude, beachLongitude);
